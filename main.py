@@ -19,7 +19,6 @@ def home():
         try:
             # Upload Image
             image = request.files['file']
-            print(image.filename)
             filename = secure_filename(image.filename)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             full_image_path = f"static/{filename}"
