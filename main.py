@@ -6,7 +6,7 @@ import PIL
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-app.config['UPLOAD_FOLDER'] = "static/uploads/"
+app.config['UPLOAD_FOLDER'] = "static/"
 
 App = Flask(__name__)
 
@@ -20,9 +20,8 @@ def home():
             # Upload Image
             image = request.files['file']
             filename = secure_filename(image.filename)
-            MYDIR = os.path.dirname(__file__)
-            image.save(os.path.join(MYDIR + "/" + app.config['UPLOAD_FOLDER'], filename))
-            full_image_path = f"{MYDIR}/static/uploads/{filename}"
+            image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            full_image_path = f"static/{image.filename}"
             # Get Image colors and pixel count
             img = PIL.Image.open(image)
             colors, pixel_count = extcolors.extract_from_image(img, limit=10, tolerance=15)
