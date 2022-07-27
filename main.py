@@ -19,9 +19,10 @@ def home():
         try:
             # Upload Image
             image = request.files['file']
+            print(image.filename)
             filename = secure_filename(image.filename)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            full_image_path = f"static/{image.filename}"
+            full_image_path = f"static/{filename}"
             # Get Image colors and pixel count
             img = PIL.Image.open(image)
             colors, pixel_count = extcolors.extract_from_image(img, limit=10, tolerance=15)
