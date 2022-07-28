@@ -67,13 +67,21 @@
 
   <!-- Hero -->
   <section id="hero" class="d-flex justify-cntent-center align-items-center">
+    {% if image %}
+    <div class="container container-hero position-relative">
+    {% else %}
     <div class="container container-hero position-relative" data-aos="fade-up" data-aos-delay="100">
+    {% endif %}
       <div class="row justify-content-center">
         <div>
           <h2>Color Palette Generator</h2>
           <p>Get a color palette from any image you want. Simply upload an image, click "Get Colors" and wait for the palette to be generated.</p>
-          <div class="file-drop-area-outer" data-aos="zoom-in" data-aos-delay="150">
-            <div class="file-drop-area">
+            {% if image %}
+            <div class="file-drop-area-outer">
+            {% else %}
+            <div class="file-drop-area-outer" data-aos="zoom-in" data-aos-delay="150">
+            {% endif %}
+              <div class="file-drop-area">
               {% if error %}
                 <p class=error><strong>{{ error }}</strong></p>
               {% endif %}
