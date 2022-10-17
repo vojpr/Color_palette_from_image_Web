@@ -26,7 +26,7 @@ def home():
             img = PIL.Image.open(image)
             colors, pixel_count = extcolors.extract_from_image(img, limit=10, tolerance=15)
             return render_template("index.html", error=error, image=full_image_path, colors=colors, pixel_count=pixel_count)
-        except:
+        except IsADirectoryError:
             error = "Upload your Image file first"
             return render_template("index.html", error=error, image=image)
     else:

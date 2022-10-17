@@ -235,6 +235,7 @@ section {
     height: 0px;
     text-align: center;
     padding-top: 20px;
+    color: #ff0000 !important;
 }
 
 .file-drop-area-inner {
