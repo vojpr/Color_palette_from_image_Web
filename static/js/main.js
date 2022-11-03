@@ -83,3 +83,15 @@ $('.upload-btn').click(function(){
 $('#getColors').click(function() {
   $('#fader').css('display', 'block');
 });
+
+/**
+* Checking file size to be less than 2 MB
+*/
+var uploadField = document.getElementById("file");
+
+uploadField.onchange = function() {
+    if(this.files[0].size > 2097152){
+       alert("File is too big! Please select a file with a maximum size of 2 MB.");
+       this.value = "";
+    };
+};
